@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>
+    todo
+</title>
+
+<body>
+
+    <form action="/inserted" method="post">
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="contents" name="contents"
+                placeholder="Contents" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">todo</button>
+    </form>
+
+    <form action="/back">
+        <button class="btn btn-primary" type="submit">back</button>
+    </form>
+
+
+    {% for id in todos %}
+    <tr>
+        <td>
+            <p> {{ id[0] }} : {{ id[1] }} </p>
+        </td>
+    </tr>
+    {% endfor %}
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+</head>
+
+<body>
+    <h1>todo app</h1>
+    <!--
+     CREATE TABLE todos(id INTEGER PRIMARY KEY, contents TEXT NOT NULL);
+   -->
+
+    <form action="/insert">
+        <button id="insertbtn">insert</button>
+    </form>
+    <form action="/delete">
+        <button id="deletebtn">delete</button>
+    </form>
+
+    {% for id in todos %}
+    <tr>
+        <td>
+            <p> {{ id[0] }} : {{ id[1] }} </p>
+        </td>
+    </tr>
+    {% endfor %}
+
+</body>
+
+</html>
