@@ -6,16 +6,19 @@
 
 <body>
     <form action="/deleted" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="number" name="number"
-                placeholder="Contents" type="number">
-        </div>
-        <button class="btn btn-primary" type="submit">todo</button>
+
+        <input autocomplete="off" id="number" name="number" placeholder="Contents" type="number">
+
+        <p>
+        <table>
+            <button type="submit">todo</button>
     </form>
 
     <form action="/back">
-        <button class="btn btn-primary" type="submit">back</button>
+        <button type="submit">back</button>
     </form>
+    </table>
+    </p>
 
     {% for id in todos %}
     <tr>

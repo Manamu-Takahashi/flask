@@ -6,23 +6,43 @@
 
 <body>
     <h1>todo app</h1>
-    <!--
-     CREATE TABLE todos(id INTEGER PRIMARY KEY, contents TEXT NOT NULL);
-   -->
 
-    <form action="/insert">
-        <button id="insertbtn">insert</button>
-    </form>
-    <form action="/delete">
-        <button id="deletebtn">delete</button>
-    </form>
+    <table>
+        <td>
+            <!--serch option-->
+            <form action="/serch">
+                <button id="sg" name="sg">serch
+                </button>
+            </form>
+        </td>
+
+
+        <!--insert option-->
+        <td>
+            <form action="/insert">
+                <button id="insertbtn">insert</button>
+            </form>
+        </td>
+
+        <!--delete option-->
+        <td>
+            <form action="/delete">
+                <button id="deletebtn">delete</button>
+            </form>
+        </td>
+    </table>
 
     {% for id in todos %}
-    <tr>
-        <td>
-            <p> {{ id[0] }} : {{ id[1] }} </p>
-        </td>
-    </tr>
+    <table>
+        <tr>
+            <td>
+                {{ id[0] }} : {{ id[1] }}
+            </td>
+            <td class="button">
+                <button type="submit" id="idbtn" name="idbtn" value="{{id}}">delete</button>
+            </td>
+        </tr>
+    </table>
     {% endfor %}
 
 </body>

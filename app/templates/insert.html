@@ -6,17 +6,22 @@
 
 <body>
 
-    <form action="/inserted" method="post">
-        <div class="mb-3">
-            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="contents" name="contents"
-                placeholder="Contents" type="text">
-        </div>
-        <button class="btn btn-primary" type="submit">todo</button>
-    </form>
+    <table>
+        <form action="/inserted" method="post">
 
-    <form action="/back">
-        <button class="btn btn-primary" type="submit">back</button>
-    </form>
+            <input autocomplete="off" id="contents" name="contents" placeholder="Contents" type="text">
+
+            <p>
+            <table>
+                <button type="submit">todo</button>
+        </form>
+
+        <form action="/back">
+            <button type="submit">back</button>
+        </form>
+    </table>
+    </p>
+    </table>
 
 
     {% for id in todos %}
