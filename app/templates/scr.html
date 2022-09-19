@@ -6,14 +6,21 @@
 
 <body>
     scr
+    <form action="/scrdeleted" method="post">
+        <input autocomplete="off" id="scrnumber" name="scrnumber" placeholder="scr delete" type="number">
+        <p>
+        <table>
+            <button type="submit">todo</button>
+    </form>
+    <form action="/back">
+        <button type="submit">back</button>
+    </form>
+
     {% for id in scrs %}
     <table>
         <tr>
             <td>
                 {{ id[0] }} : {{ id[1] }}
-            </td>
-            <td class="button">
-                <button type="submit" id="idbtn" name="idbtn" value="{{id}}">delete</button>
             </td>
         </tr>
     </table>

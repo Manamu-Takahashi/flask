@@ -2,6 +2,10 @@
 <html lang="ja">
 
 <head>
+    <title>
+        todo
+    </title>
+    <meta charset="UTF-8" name="viewport" content="width=device-width">
 </head>
 
 <body>
@@ -10,7 +14,7 @@
     <table>
         <td>
             <!--serch option-->
-            <form action="/serch">
+            <form action="/search">
                 <button id="sg" name="sg">serch
                 </button>
             </form>
@@ -37,19 +41,20 @@
         </td>
     </table>
 
-    {% for id in todos %}
-    <table>
-        <tr>
-            <td>
-                {{ id[0] }} : {{ id[1] }}
-            </td>
-            <td class="button">
-                <button type="submit" id="idbtn" name="idbtn" value="{{id}}">delete</button>
-            </td>
-        </tr>
-    </table>
-    {% endfor %}
-
+    <form action="/rdbtn" method="post">
+        {% for id in todos %}
+        <table>
+            <tr>
+                <td>
+                    {{ id[0] }} : {{ id[1] }}
+                </td>
+                <td class="button">
+                    <button id="idbtn" name="idbtns" value="{{id[0]}}">{{ id[0] }}delete</button>
+                </td>
+            </tr>
+        </table>
+        {% endfor %}
+    </form>
 </body>
 
 </html>

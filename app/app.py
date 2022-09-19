@@ -35,7 +35,7 @@ def insdbtn():
 
     db.execute('INSERT INTO todos (contents) VALUES(?)', (contests, ))
     db.commit()
-    
+
     todos = db.execute("SELECT * FROM todos")
 
     return render_template("./insert.html", todos=todos)
@@ -61,36 +61,48 @@ def back():
     return render_template("./index.html", todos=todos)
 
 
-#rd button not complete
-@app.route("/rdbtn")
+# rd button not complete
+@app.route("/rdbtn", methods=["GET", "POST"])
 def rdbtn():
     todos = db.execute("SELECT * FROM todos")
-
-    idbtn = request.form.get("idbtn")
-    print(idbtn)
-
-    delete = db.execute("DELETE FROM todos WHERE id = ?", (idbtn, ))
-    db.commit()
-
+    rb = request.form.get("idbtn")
+    print(rb)
     return render_template("./index.html", todos=todos)
 
-@app.route("/serch")
+
+@app.route("/search")
 def serch():
-    return ""
+    return render_template("./ser.html")
 
 
 @app.route("/scr")
 def scr():
-    
+
     r = requests.get("https://book.impress.co.jp")
     soup = BeautifulSoup(r.text, "html.parser")
     print(soup.find("h2"))
     print(soup.find("h2").text)
 
-    db.execute("INSERT INTO scrs (contents) VALUES(?)", (soup.find("h2").text,))
+    db.execute("INSERT INTO scrs (contents) VALUES(?)",
+               (soup.find("h1").text,))
+    db.commit()
     scrs = db.execute("SELECT * FROM scrs")
-    
+
     return render_template("scr.html", scrs=scrs)
+
+
+@app.route("/scrdeleted", methods=["GET", "POST"])
+def scrdltdbtn():
+    scrnumber = request.form.get("scrnumber")
+    if not scrnumber:
+        return render_template("./index.html")
+
+    db.execute('DELETE FROM scrs WHERE id = ?', (scrnumber, ))
+    db.commit()
+
+    scrs = db.execute("SELECT * FROM scrs")
+
+    return render_template("./scr.html", scrs=scrs)
 
 
 if __name__ == "__main__":
