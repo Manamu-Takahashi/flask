@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<title>
+    scr
+</title>
+
+<body>
+    scr
+    {% for id in scrs %}
+    <table>
+        <tr>
+            <td>
+                {{ id[0] }} : {{ id[1] }}
+            </td>
+            <td class="button">
+                <button type="submit" id="idbtn" name="idbtn" value="{{id}}">delete</button>
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+</body>
+
+</html>

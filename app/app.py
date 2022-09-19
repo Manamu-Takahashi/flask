@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, flash
 import sqlite3
+import requests
+from bs4 import BeautifulSoup
 
 
 app = Flask(__name__)
@@ -75,6 +77,20 @@ def rdbtn():
 @app.route("/serch")
 def serch():
     return ""
+
+
+@app.route("/scr")
+def scr():
+    
+    r = requests.get("https://book.impress.co.jp")
+    soup = BeautifulSoup(r.text, "html.parser")
+    print(soup.find("h2"))
+    print(soup.find("h2").text)
+
+    db.execute("INSERT INTO scrs (contents) VALUES(?)", (soup.find("h2").text,))
+    scrs = db.execute("SELECT * FROM scrs")
+    
+    return render_template("scr.html", scrs=scrs)
 
 
 if __name__ == "__main__":
