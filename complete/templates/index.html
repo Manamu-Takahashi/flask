@@ -4,7 +4,24 @@
     <input id="text_insert" name="text_insert">
     <button id="btn_todo_insert" name="btn_todo_insert">todo_insert</button>
 </form>
-<form action="/todo_delete">
+<form action="/todo_delete" method="post">
+    <input id="text_delete" name="text_delete" type="number" min="1">
     <button id="todo_delete" name="todo_delete">todo_delete</button>
 </form>
+<form action="/todo_search_number" method="post">
+    <input id="id_todo_search" name="id_todo_search" type="number">
+    <button>search number</button>
+</form>
+<form action="/todo_search_text" method="post">
+    <input id="text_todo_search" name="text_todo_search" type="text">
+    <button>search text</button>
+</form>
+{% for todo_list in todo_lists %}
+<table>
+    <tr>
+        <td>{{ todo_list[0] }}</td>
+        <td>{{ todo_list[1] }}</td>
+    </tr>
+</table>
+{% endfor %}
 {% endblock %}
