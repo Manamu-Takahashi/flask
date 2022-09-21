@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="/todo_insert" method="post">
+    <input id="text_insert" name="text_insert">
+    <button id="btn_todo_insert" name="btn_todo_insert">todo_insert</button>
+</form>
+<form action="/todo_delete">
+    <button id="todo_delete" name="todo_delete">todo_delete</button>
+</form>
+{% endblock %}
