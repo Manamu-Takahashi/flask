@@ -16,11 +16,20 @@
     <input id="text_todo_search" name="text_todo_search" type="text">
     <button>search text</button>
 </form>
+<form action="/todo_scraiping">
+    <button>todo_scraiping</button>
+</form>
 {% for todo_list in todo_lists %}
 <table>
     <tr>
         <td>{{ todo_list[0] }}</td>
         <td>{{ todo_list[1] }}</td>
+        <td>
+            <form action="loop_delete" method="post">
+                <button id="btn_loop_delete" name="btn_loop_delete" value="{{todo_list[0]}}">
+                    {{ todo_list[0]}}delete</button>
+            </form>
+        </td>
     </tr>
 </table>
 {% endfor %}

@@ -43,5 +43,18 @@ def todo_search_text():
     todo_limits = todo_db.execute("SELECT * FROM todos WHERE contents LIKE  ? ", (text_todo_search,))
     return render_template("./search_text.html", todo_limits=todo_limits)
 
+
+@app.route("/todo_scraiping")
+def todo_scraiping():
+    return render_template("./scraiping.html")
+
+@app.route("/loop_delete", methods=["GET", "POST"])
+def loop_delete():
+    loop_delete = request.form.get("btn_loop_delete")
+    todo_db.execute("DELETE FROM todos WHERE id = ?", (loop_delete,))
+    todo_lists = todo_db.execute("SELECT * FROM todos")
+    return render_template("./index.html", todo_lists=todo_lists)
+
+
 if __name__ == "__main__":
     app.run(debug=True)
