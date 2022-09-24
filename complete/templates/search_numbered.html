@@ -3,14 +3,13 @@
 <form action="/">
     <button>Home</button>
 </form>
-{% for todo_limit in todo_limits %}
+{% for id in open_file %}
 <table>
     <tr>
-        <td>{{ todo_limit[0] }}</td>
-        <td>{{ todo_limit[1] }}</td>
+        <td> {{ id[0] }}</td>
         <td>
-            <form action="/loop_open" method="post">
-                <button id="btn_loop_open" name="btn_loop_open" value="{{ todo_limit[0] }}">open</button>
+            <form method="post" action="/file_open">
+                <button id="btn_file_open" name="btn_file_open" value="{{id[0]}}">file_open</button>
             </form>
         </td>
     </tr>

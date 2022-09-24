@@ -2,10 +2,15 @@
 {% block body %}
 <form action="/todo_insert" method="post">
     <input id="text_insert" name="text_insert">
+    <select>
+        <option id="None">None</option>
+        <option id="submit">submit</option>
+        <option id="loop">loop</option>
+    </select>
     <button id="btn_todo_insert" name="btn_todo_insert">todo_insert</button>
 </form>
 <form action="/todo_delete" method="post">
-    <input id="text_delete" name="text_delete" type="number" min="1">
+    <input id="text_delete" name="text_delete" type="number" min="1" placeholder="記入した番号を削除できます">
     <button id="todo_delete" name="todo_delete">todo_delete</button>
 </form>
 <form action="/todo_search_number" method="post">
