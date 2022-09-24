@@ -145,11 +145,19 @@ def uploads_file():
             file_date = request.form.get("file_date")
             todo_db.execute("INSERT INTO filenames(contents, date) VALUES(?, ?)", (filename, file_date))
             todo_db.commit()
-            filenames = todo_db.execute("SELECT contents FROM filenames")
+            filenames = todo_db.execute("SELECT * FROM filenames")
             file.save(os.path.join(app.config['STATIC_FOLDER'], filename))
             return render_template("uploads.html", filenames=filenames)
     return render_template("./uploads.html")
 
+
+@app.route("/delete_uploads", methods=["POST", "GET"])
+def delete_uploads():
+    delete_upload_id = request.form.get("btn_delete_uploads")
+    todo_db.execute("DELETE FROM filenames WHERE id = ?", (delete_upload_id,))
+    todo_db.commit()
+    filenames = todo_db.execute("SELECT * FROM filenames")
+    return render_template("./uploads.html", filenames=filenames)
 
 if __name__ == "__main__":
     app.run(debug=True)
