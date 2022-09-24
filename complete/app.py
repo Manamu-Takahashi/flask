@@ -142,8 +142,8 @@ def uploads_file():
             return redirect(request.url)
         if file and allwed_file(file.filename):
             filename = secure_filename(file.filename)
-            todo_db.execute(
-                "INSERT INTO filenames(contents) VALUES(?)", (filename,))
+            file_date = request.form.get("file_date")
+            todo_db.execute("INSERT INTO filenames(contents, date) VALUES(?, ?)", (filename, file_date))
             todo_db.commit()
             filenames = todo_db.execute("SELECT contents FROM filenames")
             file.save(os.path.join(app.config['STATIC_FOLDER'], filename))
