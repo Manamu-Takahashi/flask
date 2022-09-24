@@ -1,34 +1,27 @@
 {% extends "layout.html" %}
 {% block body %}
+
+
 <form action="/todo_insert" method="post">
     <input id="text_insert" name="text_insert">
-    <select>
-        <option id="None">None</option>
-        <option id="submit">submit</option>
-        <option id="loop">loop</option>
+    <select id="type_text" name="type_text">
+        {% for type in types %}
+        <option value="{{ type }}" name="type">{{ type }}</option>
+        {% endfor %}
     </select>
     <button id="btn_todo_insert" name="btn_todo_insert">todo_insert</button>
 </form>
-<form action="/todo_delete" method="post">
-    <input id="text_delete" name="text_delete" type="number" min="1" placeholder="記入した番号を削除できます">
-    <button id="todo_delete" name="todo_delete">todo_delete</button>
+
+<form action="/option" method="post">
+    <button>option</button>
 </form>
-<form action="/todo_search_number" method="post">
-    <input id="id_todo_search" name="id_todo_search" type="number">
-    <button>search number</button>
-</form>
-<form action="/todo_search_text" method="post">
-    <input id="text_todo_search" name="text_todo_search" type="text">
-    <button>search text</button>
-</form>
-<form action="/todo_scraiping">
-    <button>todo_scraiping</button>
-</form>
+
 {% for todo_list in todo_lists %}
 <table>
     <tr>
         <td>{{ todo_list[0] }}</td>
         <td>{{ todo_list[1] }}</td>
+        <td>{{ todo_list[2] }}</td>
         <td>
             <form action="loop_delete" method="post">
                 <button id="btn_loop_delete" name="btn_loop_delete" value="{{todo_list[0]}}">
@@ -38,4 +31,6 @@
     </tr>
 </table>
 {% endfor %}
+
+
 {% endblock %}

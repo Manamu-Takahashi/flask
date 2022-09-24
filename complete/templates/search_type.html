@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block body %}
+<form action="/">
+    <button>Home</button>
+</form>
+{% for todo_limit in todo_limits %}
+<table>
+    <tr>
+        <td>{{ todo_limit[0] }}</td>
+        <td>{{ todo_limit[1] }}</td>
+    </tr>
+</table>
+{% endfor %}
+<form action="/">
+    <button>Home</button>
+</form>
+{% endblock %}

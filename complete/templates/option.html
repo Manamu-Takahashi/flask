@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block body %}
+
+
+<form action="/todo_delete" method="post">
+    <!--
+        <input id="text_delete" name="text_delete" type="number" min="1" placeholder="記入した番号を削除できます">
+-->
+    <select id="text_delete" name="text_delete">
+        {% for delete_list in delete_lists %}
+        <option>{{ delete_list[0] }}</option>
+        {% endfor %}
+    </select>
+    <button id="todo_delete" name="todo_delete">todo_delete</button>
+</form>
+
+<form action="/todo_search_number" method="post">
+    <!--
+        <input id="id_todo_search" name="id_todo_search" type="number">
+-->
+    <select id="id_todo_search" name="id_todo_search">
+        {% for search_number in search_numbers %}
+        <option>{{ search_number[0] }}</option>
+        {% endfor %}
+    </select>
+    <button>search number</button>
+</form>
+
+
+<form action="/todo_search_text" method="post">
+    <!--
+        <input id="text_todo_search" name="text_todo_search" type="text">
+-->
+    <select id="text_todo_search" name="text_todo_search">
+        {% for type in types %}
+        <option value="{{ type }}">{{ type }}</option>
+        {% endfor %}
+    </select>
+    <button>search text</button>
+</form>
+
+
+<form>
+    <select>
+        {% for search_type in search_types %}
+        <option>{{ search_type[2] }}</option>
+        {% endfor %}
+    </select>
+    <button>search type</button>
+</form>
+
+
+<form action="/todo_scraiping">
+    <button>todo_scraiping</button>
+</form>
+
+<form action="/">
+    <button>Home</button>
+</form>
+
+
+{% endblock %}
