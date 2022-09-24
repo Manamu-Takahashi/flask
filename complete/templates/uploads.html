@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <form action="/upload_page" method="post" enctype="multipart/form-data">
-    <input id="file_text" name="file_text" placeholder="image day or todo day">
+    <input id="file_text" name="file_text" type="date">
     <input type="file" name="file">
     <input type="submit" value="Upload">
 </form>
