@@ -6,10 +6,10 @@ from flask import send_from_directory
 from werkzeug.utils import secure_filename
 import sqlite3
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="./templates/images")
 
 
-STATIC_FOLDER = "./static"
+STATIC_FOLDER = "./templates/images"
 
 ALLOWED_EXTENSIONS = set(["png", "jpg", "gif", "heic", "jpeg"])
 
@@ -151,7 +151,7 @@ def uploads_file():
             todo_db.execute(
                 "INSERT INTO filenames(contents) VALUES(?)", (filename,))
             todo_db.commit()
-            filenames = todo_db.execute("SELECT * FROM filenames")
+            filenames = todo_db.execute("SELECT contents FROM filenames")
             # ファイルの保存
             file.save(os.path.join(app.config['STATIC_FOLDER'], filename))
             # アップロード後のページに転送
