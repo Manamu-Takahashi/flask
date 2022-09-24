@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 {% block body %}
 <form action="/upload_page" method="post" enctype="multipart/form-data">
+    <input id="file_text" name="file_text" placeholder="image day or todo day">
     <input type="file" name="file">
     <input type="submit" value="Upload">
 </form>
 {% for filename in filenames %}
-{{ filename[0] }}
 <img src="./images/{{filename[0]}}" width="100">
 {% endfor %}
 <!--<img src="./static/IMG_0015.JPG" width="100">-->
