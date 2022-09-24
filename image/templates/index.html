@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang=”ja”>
+
+<head>
+    <meta charset=”UTF-8″>
+</head>
+
+<body>
+    <title>Flask練習</title>
+    {% for t in temp %}
+    {{ t[1] }}
+    <img src="./images/{{t[1]}}" width="100">
+    {% endfor %}
+</body>
+
+</html>
