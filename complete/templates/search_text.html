@@ -3,14 +3,24 @@
 <form action="/">
     <button>Home</button>
 </form>
+
 {% for todo_limit in todo_limits %}
-<table>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>TEXT</th>
+        <th>TYPE</th>
+        <th>DELETE BUTTON</th>
+    </tr>
     <tr>
         <td>{{ todo_limit[0] }}</td>
         <td>{{ todo_limit[1] }}</td>
+        <td>{{ todo_limit[2] }}</td>
     </tr>
 </table>
+
 {% endfor %}
+
 <form action="/">
     <button>Home</button>
 </form>

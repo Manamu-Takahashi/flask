@@ -7,6 +7,7 @@ from werkzeug.utils import secure_filename
 import sqlite3
 
 app = Flask(__name__, static_folder="./templates/images")
+app.secret_kry = "lock"
 
 
 STATIC_FOLDER = "./templates/images"
@@ -77,7 +78,7 @@ def todo_search_text():
     print(type(text_todo_search))
     todo_limits = todo_db.execute(
         "SELECT * FROM todos WHERE contents LIKE  ? ", (text_todo_search,))
-    return render_template("./search_text.html", todo_limits=todo_limits, types=types)
+    return render_template("./search_text.html", todo_limits=todo_limits)
 
 
 @app.route("/todo_scraiping")
@@ -110,10 +111,13 @@ def file_open():
     return "Hello"
 
 
-@app.route("/todo_search_type", methods=["POST"])
+@app.route("/todo_search_type", methods=["POST", "GET"])
 def todo_search_type():
+    search_type = request.form.get("search_type")
+    print(search_type)
     todo_lists = todo_db.execute("SELECT * FROM todos")
-    return render_template("search_type.html", todo_lists=todo_lists, types=types)
+    search_types = todo_db.execute("SELECT * FROM todos")
+    return render_template("search_type.html", todo_lists=todo_lists, search_types=search_types)
 
 
 @app.route("/option", methods=["POST"])
@@ -158,6 +162,11 @@ def delete_uploads():
     todo_db.commit()
     filenames = todo_db.execute("SELECT * FROM filenames")
     return render_template("./uploads.html", filenames=filenames)
+
+
+@app.route("/searched_type")
+def searched_type():
+    return "Hello"
 
 if __name__ == "__main__":
     app.run(debug=True)

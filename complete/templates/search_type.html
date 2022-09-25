@@ -3,14 +3,23 @@
 <form action="/">
     <button>Home</button>
 </form>
-{% for todo_limit in todo_limits %}
-<table>
+
+{% for search_type in search_types %}
+<table class="table table-striped">
     <tr>
-        <td>{{ todo_limit[0] }}</td>
-        <td>{{ todo_limit[1] }}</td>
+        <th>ID</th>
+        <th>TEXT</th>
+        <th>TYPE</th>
+        <th>DELETE BUTTON</th>
+    </tr>
+    <tr>
+        <td> {{ search_type[0] }} </td>
+        <td> {{ search_type[1] }} </td>
+        <td> {{ search_type[2] }} </td>
     </tr>
 </table>
 {% endfor %}
+
 <form action="/">
     <button>Home</button>
 </form>

@@ -21,7 +21,13 @@
 </form>
 
 {% for todo_list in todo_lists %}
-<table>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>TEXT</th>
+        <th>TYPE</th>
+        <th>DELETE BUTTON</th>
+    </tr>
     <tr>
         <td>{{ todo_list[0] }}</td>
         <td>{{ todo_list[1] }}</td>

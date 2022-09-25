@@ -32,18 +32,18 @@
         <input id="text_todo_search" name="text_todo_search" type="text">
 -->
     <select id="text_todo_search" name="text_todo_search">
-        {% for type in types %}
-        <option value="{{ type }}">{{ type }}</option>
+        {% for search_text in search_texts %}
+        <option value="{{ search_text[1] }}">{{ search_text[1] }}</option>
         {% endfor %}
     </select>
     <button>search text</button>
 </form>
 
 
-<form>
-    <select>
+<form action="/todo_search_type" method="post">
+    <select id="search_type" name="search_type">
         {% for search_type in search_types %}
-        <option>{{ search_type[2] }}</option>
+        <option value="{{ search_type }}">{{ search_type[2] }}</option>
         {% endfor %}
     </select>
     <button>search type</button>

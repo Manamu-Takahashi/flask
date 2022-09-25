@@ -4,7 +4,12 @@
     <button>Home</button>
 </form>
 {% for todo_limit in todo_limits %}
-<table>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>TEXT</th>
+        <th>OPEN BUTTON</th>
+    </tr>
     <tr>
         <td>{{ todo_limit[0] }}</td>
         <td>{{ todo_limit[1] }}</td>
