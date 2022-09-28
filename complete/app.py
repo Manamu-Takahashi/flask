@@ -131,19 +131,17 @@ def option():
 
 @app.route("/uploads", methods=["POST"])
 def uploads():
-    return render_template("./uploads.html")
+    filenames = todo_db.execute("SELECT * FROM filenames")
+    return render_template("./uploads.html", filenames=filenames)
 
 
 @app.route('/upload_page', methods=['GET', 'POST'])
 def uploads_file():
     if request.method == 'POST':
-        if 'file' not in request.files:
-            flash('ファイルがありません')
-            return redirect(request.url)
         file = request.files['file']
-        if file.filename == '':
-            flash('ファイルがありません')
-            return redirect(request.url)
+        if not file:
+            filenames = todo_db.execute("SELECT * FROM filenames")
+            return render_template("./uploads.html", filenames=filenames)
         if file and allwed_file(file.filename):
             filename = secure_filename(file.filename)
             file_date = request.form.get("file_date")
@@ -167,6 +165,12 @@ def delete_uploads():
 @app.route("/searched_type")
 def searched_type():
     return "Hello"
+
+
+@app.route("/board")
+def board():
+    filenames = todo_db.execute("SELECT * FROM filenames")    
+    return render_template("./board.html", filenames=filenames)
 
 if __name__ == "__main__":
     app.run(debug=True)

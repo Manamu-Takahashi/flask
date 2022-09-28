@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block body %}
+
+{% for filename in filenames %}
+<table align="center">
+    <tr>
+        <p>
+    <tr>
+        <td>
+            {{ filename }}
+        </td>
+    </tr>
+
+    <td>
+
+        <img src="./images/{{filename[1]}}" width="600">
+    </td>
+    </p>
+    </tr>
+</table>
+
+
+{% endfor %}
+<form action="/">
+    <button>
+        Home
+    </button>
+</form>
+{% endblock %}
